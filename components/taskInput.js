@@ -1,8 +1,8 @@
 import React from "react";
 import { Button, StyleSheet, TextInput, View } from "react-native"
+import { connect } from 'react-redux'
 
-
-export default class TaskInput extends React.Component {
+class TaskInput extends React.Component {
 
     state = {
         input: "",
@@ -13,7 +13,10 @@ export default class TaskInput extends React.Component {
     }
 
     handleAdd = () => {
-
+        this.props.dispatch({
+            type: 'ADD_TODO',
+            payload: this.state.input
+        })
     }
 
     render() {
@@ -50,4 +53,4 @@ const styles = StyleSheet.create({
     }
 });
 
-
+export default connect(null, null)(TaskInput)

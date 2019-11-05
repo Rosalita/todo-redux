@@ -1,10 +1,10 @@
-import {ADD_TODO} from './actions'
+import { ADD_TODO } from './actions'
 
-const reducer = (state = {}, action) => {
+const reducer = (prevState = { tasks: [] }, action) => {
     if (action.type === ADD_TODO) {
-        // Add to do to the state
+        return { tasks: prevState.tasks.concat(action.payload) }
     }
-    return state
+    return prevState
 }
 
 export default reducer

@@ -1,11 +1,14 @@
 import React from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native"
+import { connect } from 'react-redux'
 
-export default class TaskList extends React.Component {
+const mapStateToProps = (state) => {
+    return (
+        { tasks: state.tasks }
+    )
+}
 
-    state = {
-        tasks: ["Learn React Native", "Learn Redux", "Build final project"],
-    }
+class TaskList extends React.Component {
 
     render() {
         return (
@@ -13,7 +16,7 @@ export default class TaskList extends React.Component {
                 <Text>Task List</Text>
                 <FlatList
                     style={styles.list}
-                    data={this.state.tasks}
+                    data={this.props.tasks}
                     renderItem={({ item, index }) => <View><Text>{index + 1}: {item}</Text></View>}
                     keyExtractor={(item, index) => `${item}-${index}`}
                 />
@@ -34,5 +37,8 @@ const styles = StyleSheet.create({
         marginTop: 10,
     }
 });
+
+export default connect(mapStateToProps)(TaskList)
+
 
 
