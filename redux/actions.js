@@ -2,7 +2,7 @@
 export const ADD_TODO = 'ADD_TODO'
 
 // action creators
-export const toggleToDo = update => ({
+export const addToDo = update => ({
   type: ADD_TODO,
   payload: update,
 })
