@@ -3,6 +3,11 @@ import { Button, StyleSheet, TextInput, View } from "react-native"
 import { connect } from 'react-redux'
 import { addToDo } from '../redux/actions'
 
+const mapDispatchToProps = (dispatch) =>  {
+    return {
+      addToDo: (input) => dispatch(addToDo(input))
+    }
+  }
 
 class TaskInput extends React.Component {
 
@@ -52,4 +57,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(null, {addToDo: addToDo})(TaskInput)
+export default connect(null, mapDispatchToProps)(TaskInput)
